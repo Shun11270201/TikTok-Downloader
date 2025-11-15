@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TikTok一括ダウンローダー</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>TikTok一括ダウンローダー</h1>
+        <p class="lead">
+          ご自身がアップロード済みのTikTok動画URL（最大100件）を貼り付けて、一括でmp4としてダウンロードできます。
+        </p>
+      </header>
+
+      <section class="panel">
+        <form id="download-form">
+          <label for="urls">TikTok URL一覧</label>
+          <textarea
+            id="urls"
+            name="urls"
+            placeholder="https://www.tiktok.com/@example/video/1234567890"
+            rows="10"
+          ></textarea>
+          <div class="input-row">
+            <label class="file-input">
+              URLリストファイルを読み込む
+              <input type="file" id="file-input" accept=".txt,.csv,.tsv" hidden />
+            </label>
+            <span id="url-count">0件</span>
+          </div>
+          <p class="helper-text">
+            各URLは改行・カンマ・スペースなどで区切って入力できます。100件を超える場合は分割してください。
+          </p>
+          <button type="submit" id="submit-btn">一括ダウンロード</button>
+        </form>
+      </section>
+
+      <section class="panel status">
+        <h2>進捗</h2>
+        <p id="status-message">待機中</p>
+        <dl id="summary" class="summary">
+          <div>
+            <dt>総URL</dt>
+            <dd id="summary-total">0</dd>
+          </div>
+          <div>
+            <dt>成功</dt>
+            <dd id="summary-success">0</dd>
+          </div>
+          <div>
+            <dt>失敗</dt>
+            <dd id="summary-failed">0</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="panel tips">
+        <h2>使い方のヒント</h2>
+        <ul>
+          <li>CSVやテキストファイルを読み込むときは、1行に1URLを記入してください。</li>
+          <li>ダウンロード完了後、ZIP内に <code>download_report.json</code> が出力され、成功・失敗一覧を確認できます。</li>
+          <li>著作権やTikTokの利用規約に従い、ご自身の動画のみダウンロードしてください。</li>
+        </ul>
+      </section>
+    </main>
+    <script type="module" src="/static/app.js"></script>
+  </body>
+</html>
+
